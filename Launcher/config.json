@@ -112,9 +112,25 @@
   "bitfinex-api-secret": "",
   "bitfinex-api-key": "",
 
-    // binance configuration
+  // binance configuration
   "binance-api-secret": "",
   "binance-api-key": "",
+
+  // Trading Technologies configuration
+  "tt-user-name": "",
+  "tt-session-password": "",
+  "tt-account-name": "",
+  "tt-rest-app-key": "",
+  "tt-rest-app-secret": "",
+  "tt-rest-environment": "",
+  "tt-market-data-sender-comp-id": "",
+  "tt-market-data-target-comp-id": "",
+  "tt-market-data-host": "",
+  "tt-market-data-port": "",
+  "tt-order-routing-sender-comp-id": "",
+  "tt-order-routing-target-comp-id": "",
+  "tt-order-routing-host": "",
+  "tt-order-routing-port": "",
 
   // Required to access data from Quiver Quantitative
   // To get your access token go to https://api.quiverquant.com
@@ -312,6 +328,21 @@
       // real brokerage implementations require the BrokerageTransactionHandler
       "live-mode-brokerage": "AlpacaBrokerage",
       "data-queue-handler": "PolygonDataQueueHandler",
+      "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
+      "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
+      "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
+      "real-time-handler": "QuantConnect.Lean.Engine.RealTime.LiveTradingRealTimeHandler",
+      "transaction-handler": "QuantConnect.Lean.Engine.TransactionHandlers.BrokerageTransactionHandler",
+      "history-provider": "BrokerageHistoryProvider"
+    },
+
+    // defines the 'live-trading-technologies' environment
+    "live-trading-technologies": {
+      "live-mode": true,
+
+      // real brokerage implementations require the BrokerageTransactionHandler
+      "live-mode-brokerage": "TradingTechnologiesBrokerage",
+      "data-queue-handler": "TradingTechnologiesBrokerage",
       "setup-handler": "QuantConnect.Lean.Engine.Setup.BrokerageSetupHandler",
       "result-handler": "QuantConnect.Lean.Engine.Results.LiveTradingResultHandler",
       "data-feed-handler": "QuantConnect.Lean.Engine.DataFeeds.LiveTradingDataFeed",
